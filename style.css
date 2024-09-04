@@ -1,0 +1,206 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Prevent scrolling on the whole page */
+}
+
+header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px; /* Increased padding for better appearance */
+  box-sizing: border-box; /* Ensure padding is included in the height calculation */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  margin: 0;
+}
+
+.chat-window {
+  width: 100%;
+  height: calc(100vh - 60px - 60px); /* Adjust height to fit within the container minus the header and user-input height */
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add shadow for better appearance */
+}
+
+.chat-area {
+  flex: 1;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 20px;
+  box-sizing: border-box; /* Ensure padding is included in the height calculation */
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  margin-bottom: 10px;
+  background-color: #fff;
+  padding: 15px; /* Increased padding for better appearance */
+  border-radius: 8px; /* Rounded corners */
+  position: relative;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1); /* Add shadow for better appearance */
+}
+
+.timestamp {
+  font-size: 0.75em; /* Slightly smaller font for timestamp */
+  color: #888;
+  margin-left: 5px; /* Reduced margin */
+  display: inline; /* Display inline with the message */
+}
+
+.user-input {
+  display: flex;
+  align-items: center;
+  padding: 15px; /* Adjust padding for better alignment */
+  background-color: #fff;
+  border-top: 1px solid #ddd; /* Optional: Adds a border to separate input from messages */
+  box-sizing: border-box; /* Ensure padding is included in the height calculation */
+}
+
+#name-input, #message-input {
+  flex-grow: 1;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#send-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+#send-button:hover {
+  background-color: #0056b3;
+}
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Dim background */
+  z-index: 999; /* Ensure it's above other content */
+}
+
+.login-popup {
+width: 520px;
+padding: 20px;
+background-color: #fff;
+border-radius: 20px; /* Rounded rectangle */
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+transform: scale(0.9); /* Slightly shrunk */
+animation: pop-up 0.4s ease forwards; /* Animation for pop-up effect */
+}
+
+.login-form h3 {
+position: relative; /* Change to relative or absolute */
+top: -25px; /* Adjust the value as needed */
+margin-bottom: 20px;
+text-align: center;
+}
+
+
+.login-form input {
+width: 80%;
+padding: 10px; /* Adjusts the space inside the input field */
+margin-bottom: 15px; /* Space between input fields */
+border: 3px solid #2980b9;
+border-radius: 10px;
+background-color: #f9f9f9; /* Background color */
+color: #333; /* Text color */
+font-size: 16px; /* Font size */
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+transition: border-color 0.3s, box-shadow 0.3s;
+position: relative;
+top: -38px;
+}
+
+.login-form input:focus {
+border-color: #4CAF50; /* Border color when focused */
+box-shadow: 0 0 5px rgba(0, 255, 0, 0.2); /* Shadow effect when focused */
+outline: none; /* Remove default focus outline */
+}
+
+#loginButton {
+margin-top: 20px;
+position: absolute;
+left: 35%;
+transform: translateX(-50%);
+padding: 10px;
+background-color: #4CAF50;
+color: white;
+border: none;
+width: 20%;
+border-radius: 10px;
+cursor: pointer;
+padding: 10px;
+}
+
+#registerButton {
+margin-top: 20px;
+position: absolute;
+left: 60%;
+transform: translateX(-50%);
+padding: 10px;
+background-color: #4CAF50;
+color: white;
+border: none;
+width: 20%;
+border-radius: 10px;
+cursor: pointer;
+padding: 10px;
+}
+
+
+.login-wrapper {
+display: flex;
+}
+.login-form button:hover {
+background-color: #45a049;
+}
+
+.login-form button:disabled {
+background-color: grey;
+cursor: default;
+}
+
+@keyframes pop-up {
+from {
+  transform: scale(0.9);
+  opacity: 0;
+}
+to {
+  transform: scale(1);
+  opacity: 1;
+}
+}
+
+#logoutButton {
+  position: fixed;
+  z-index: 12;
+  color: white;
+  background-color: red;
+  top: 10px;
+  right: 10px;
+  border: black 1px solid;
+  border-radius: 5px;
+}
