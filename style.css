@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -28,19 +29,26 @@ header {
   flex-direction: column;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add shadow for better appearance */
+  box-sizing: border-box; /* Ensure padding is included in the width calculation */
+  
 }
 
 .chat-area {
   flex: 1;
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: auto !important;
   padding: 20px;
-  box-sizing: border-box; /* Ensure padding is included in the height calculation */
-}
-
-.chat-messages {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
+
+.chat-messages {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow it to grow and fill available space */
+}
+
 
 .message {
   margin-bottom: 10px;
@@ -67,7 +75,7 @@ header {
   box-sizing: border-box; /* Ensure padding is included in the height calculation */
 }
 
-#name-input, #message-input {
+#message-input {
   flex-grow: 1;
   padding: 10px;
   margin-right: 10px;
@@ -77,121 +85,92 @@ header {
 
 #send-button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #007bff; /* Blue background color */
   border: none;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
+  border-radius: 4px; /* Rounded corners */
+  color: #fff; /* White text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-left: 10px; /* Margin to avoid cutting off */
+  margin-bottom: 25px;
 }
 
 #send-button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darker blue on hover */
 }
+
 .login-wrapper {
   display: flex;
   justify-content: center;
-  text-align: center;
   align-items: center;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7); /* Dim background */
-  z-index: 999; /* Ensure it's above other content */
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Slightly darker background */
 }
 
 .login-popup {
-width: 520px;
-padding: 20px;
-background-color: #fff;
-border-radius: 20px; /* Rounded rectangle */
-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-transform: scale(0.9); /* Slightly shrunk */
-animation: pop-up 0.4s ease forwards; /* Animation for pop-up effect */
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Improved shadow */
+  text-align: center;
+  width: 90%;
+  max-width: 400px; /* Limit max width */
 }
 
-.login-form h3 {
-position: relative; /* Change to relative or absolute */
-top: -25px; /* Adjust the value as needed */
-margin-bottom: 20px;
-text-align: center;
+#error-message {
+  color: #d9534f; /* Red color for error messages */
+  margin-bottom: 1rem;
 }
 
-
-.login-form input {
-width: 80%;
-padding: 10px; /* Adjusts the space inside the input field */
-margin-bottom: 15px; /* Space between input fields */
-border: 3px solid #2980b9;
-border-radius: 10px;
-background-color: #f9f9f9; /* Background color */
-color: #333; /* Text color */
-font-size: 16px; /* Font size */
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
-transition: border-color 0.3s, box-shadow 0.3s;
-position: relative;
-top: -38px;
+button {
+  background-color: #007bff; /* Primary button color */
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  transition: background-color 0.3s ease;
 }
 
-.login-form input:focus {
-border-color: #4CAF50; /* Border color when focused */
-box-shadow: 0 0 5px rgba(0, 255, 0, 0.2); /* Shadow effect when focused */
-outline: none; /* Remove default focus outline */
+button:hover {
+  background-color: #0056b3; /* Darker color on hover */
 }
 
-#loginButton {
-margin-top: 20px;
-position: absolute;
-left: 35%;
-transform: translateX(-50%);
-padding: 10px;
-background-color: #4CAF50;
-color: white;
-border: none;
-width: 20%;
-border-radius: 10px;
-cursor: pointer;
-padding: 10px;
+input[type="email"], input[type="password"], input[type="text"] {
+  width: calc(100% - 2rem); /* Full width minus padding */
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
-#registerButton {
-margin-top: 20px;
-position: absolute;
-left: 60%;
-transform: translateX(-50%);
-padding: 10px;
-background-color: #4CAF50;
-color: white;
-border: none;
-width: 20%;
-border-radius: 10px;
-cursor: pointer;
-padding: 10px;
+#username-container {
+  margin-top: 1rem;
 }
 
-
-.login-wrapper {
-display: flex;
-}
-.login-form button:hover {
-background-color: #45a049;
+.hidden {
+  display: none;
 }
 
-.login-form button:disabled {
-background-color: grey;
-cursor: default;
+#google-login, #email-login-register {
+  padding: 0.75rem 1.5rem;
+  background-color: #4285F4; /* Google blue color */
+  color: white; /* White text color */
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size for readability */
+  transition: background-color 0.3s; /* Smooth background color transition */
 }
 
-@keyframes pop-up {
-from {
-  transform: scale(0.9);
-  opacity: 0;
-}
-to {
-  transform: scale(1);
-  opacity: 1;
-}
+#google-login:hover, #email-login-register:hover {
+  background-color: #357AE8; /* Darker Google blue on hover */
 }
 
 #logoutButton {
@@ -203,4 +182,28 @@ to {
   right: 10px;
   border: black 1px solid;
   border-radius: 5px;
+}
+
+/* Ensure login fields are initially visible */
+.login-popup > div {
+  display: block;
+}
+
+/* Hide the login fields when showing the username container */
+.login-popup > div.hidden {
+  display: none;
+}
+
+/* Ensure username container is hidden initially */
+#username-container {
+  display: none;
+}
+
+/* Show the username container when it has the 'visible' class */
+#username-container.visible {
+  display: block;
+}
+
+html {
+  scroll-behavior: smooth;
 }
